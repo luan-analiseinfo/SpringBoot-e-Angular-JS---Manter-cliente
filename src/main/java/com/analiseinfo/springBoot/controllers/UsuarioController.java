@@ -15,7 +15,6 @@ import com.analiseinfo.springBoot.models.Usuario;
 import com.analiseinfo.springBoot.servicies.UsuarioService;
 
 @RestController
-@RequestMapping(value="/api")
 public class UsuarioController {
 
 	@Autowired

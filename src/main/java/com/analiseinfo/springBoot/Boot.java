@@ -2,20 +2,25 @@ package com.analiseinfo.springBoot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@SpringBootApplication
-public class Boot
-{
+import com.analiseinfo.springBoot.filter.TokenFilter;
 
-	 @RequestMapping("/olaMundoSpring")
-	  public String execute() {
-	      System.out.println("Executando a lógica com Spring MVC");
-	      return "ok";
-	  }
-	
-   public static void main(String[] args)
-   {
-      SpringApplication.run(Boot.class, args);
-   }
+@SpringBootApplication
+public class Boot {
+
+	@Bean
+	public FilterRegistrationBean filtroJwt() {
+		FilterRegistrationBean bean = new FilterRegistrationBean();
+		bean.setFilter(new TokenFilter());
+		bean.addUrlPatterns("/private/*");
+		return bean;
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(Boot.class, args);
+	}
+
 }
