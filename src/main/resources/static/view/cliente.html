@@ -1,0 +1,51 @@
+<div ng-controller="clienteController">
+	<div class="row">
+		<div class="col-md-6">
+			<form name="frmCliente" novalidate="novalidate">
+				<div>
+					<input id="btnInput" class="form-control col-lg-6" type="text"
+						ng-model="cliente.nome" required /> <span ng-show="{{frmCliente.btnInput.$valid}}">Campo
+						obrigatorio</span>
+				</div>
+
+				<div class="col-md-4">
+					<input id="button-input" class="btn btn-success" type="button"
+						value="Salvar" ng-click="salvarClientes()" /> <input
+						id="button-input" class="btn btn-primary" type="button"
+						value="Alterar" ng-click="alterarDadosCliente()" /> <input
+						id="button-input" class="btn btn-success" type="button"
+						value="Cancelar" ng-click="cancelarAlteracaoCliente()" />
+				</div>
+			<fieldset>
+				<legend>Formulario</legend>
+				{{frmCliente.$valid}}
+			</fieldset>
+			</form>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-6">
+			<table class="table .table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Opcoes</th>
+					</tr>
+				</thead>
+				<tbody ng-repeat="cli in clientes">
+					<tr>
+						<td>{{cli.id}}</td>
+						<td>{{cli.nome}}</td>
+						<td><input id="input-1" type="button" value="Excluir"
+							class="btn btn-danger" ng-click="excluirCliente(cli)" /> <input
+							type="button" value="Alterar" class="btn btn-primary"
+							ng-click="alterarCliente(cli)" /> <a href="clientes/{{cli.id}}"
+							class="btn btn-default">Detalhes</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
