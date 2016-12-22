@@ -29,11 +29,13 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value="/usuarios", consumes=MediaType.APPLICATION_JSON_VALUE, method= RequestMethod.GET)
-	public ResponseEntity<Collection<Usuario>> cadastrarUsuario() {
+	public ResponseEntity<Collection<Usuario>> carregarUsuario() {
 		Collection<Usuario> usuarios = usuarioService.buscarTodos();
 		return new ResponseEntity<>(usuarios,HttpStatus.OK);
 		
 	}
+	
+	
 	
 }
 	

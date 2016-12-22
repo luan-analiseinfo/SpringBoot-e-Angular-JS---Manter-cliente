@@ -6,7 +6,7 @@ app.controller("loginController", function($scope, $http) {
 		console.log("chamou")
 		$http({
 			method : 'POST',
-			url : 'http://localhost:8080/api/autenticar',
+			url : 'http://localhost:8080/autenticar',
 			data : $scope.usuario
 		}).then(function(response) {
 			console.log("sucesso");
