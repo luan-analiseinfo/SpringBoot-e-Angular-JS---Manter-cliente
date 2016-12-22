@@ -1,6 +1,8 @@
 app.controller("loginController", function($scope, $http) {
 	
 	$scope.usuario={};
+	$scope.token="";
+	
 	
 	$scope.autenticar = function() {
 		console.log("chamou")
@@ -10,6 +12,7 @@ app.controller("loginController", function($scope, $http) {
 			data : $scope.usuario
 		}).then(function(response) {
 			console.log("sucesso");
+			$scope.usuario= response.data;
 		}), function(response) {
 			// erro
 			console.log("falha");
