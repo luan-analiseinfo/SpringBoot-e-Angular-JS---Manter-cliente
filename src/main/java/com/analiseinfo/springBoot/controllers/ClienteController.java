@@ -18,7 +18,7 @@ import com.analiseinfo.springBoot.servicies.ClienteService;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value="/api")
+@RequestMapping(value="/private")
 public class ClienteController {
 
 	@Autowired

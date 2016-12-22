@@ -9,7 +9,7 @@ app.controller("clienteController", function($scope, $http) {
 	$scope.carregarClientes = function() {
 		$http({
 			method : 'GET',
-			url : 'http://localhost:8080/api/clientes'
+			url : 'http://localhost:8080/private/clientes'
 		}).then(function(response) {
 			$scope.clientes = response.data;
 			console.log(response.data);
@@ -26,7 +26,7 @@ app.controller("clienteController", function($scope, $http) {
 	$scope.salvarClientes = function(){
 		$http({
 			method : 'POST',
-			url : 'http://localhost:8080/api/clientes',
+			url : 'http://localhost:8080/private/clientes',
 			data : $scope.cliente
 		}).then(function(response) {
 			$scope.clientes.push(response.data);
@@ -44,7 +44,7 @@ app.controller("clienteController", function($scope, $http) {
 	$scope.alterarDadosCliente = function(){
 		$http({
 			method : 'PUT',
-			url : 'http://localhost:8080/api/clientes',
+			url : 'http://localhost:8080/private/clientes',
 			data : $scope.cliente
 		}).then(function(response) { 
 			$scope.carregarClientes();
@@ -63,7 +63,7 @@ app.controller("clienteController", function($scope, $http) {
 	$scope.excluirCliente = function(cliente){
 		$http({
 			method : 'DELETE',
-			url : 'http://localhost:8080/api/clientes/'+ cliente.id
+			url : 'http://localhost:8080/private/clientes/'+ cliente.id
 		}).then(function(response) {
 			pos = $scope.clientes.indexOf(cliente);
 			$scope.clientes.splice(pos, 1);
