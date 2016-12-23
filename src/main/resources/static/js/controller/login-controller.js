@@ -13,6 +13,8 @@ app.controller("loginController", function($scope, $http) {
 		}).then(function(response) {
 			console.log("sucesso");
 			$scope.usuario= response.data;
+			$scope.token = response.data.token;
+			localStorage.setItem("userToken",response.data.token);
 		}), function(response) {
 			// erro
 			console.log("falha");

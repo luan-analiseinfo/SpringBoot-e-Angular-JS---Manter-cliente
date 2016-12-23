@@ -8,6 +8,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.filter.GenericFilterBean;
 
@@ -32,7 +33,8 @@ public class TokenFilter extends GenericFilterBean {
 		try{
 			validaToken(token);	
 		}catch(SignatureException e){
-			throw new ServletException("Token inválido");
+//			throw new ServletException("Token inválido");
+			((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Acess não autorizado");
 		}
 		
 		chain.doFilter(request, response);

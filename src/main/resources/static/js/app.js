@@ -29,3 +29,7 @@ app.config(function($routeProvider,$locationProvider) {
   // habilitar o uso da API HTML5 History
   $locationProvider.html5Mode(true);
 });
+
+app.config(function($httpProvider) {
+	$httpProvider.interceptors.push("tokenInterceptor");
+});

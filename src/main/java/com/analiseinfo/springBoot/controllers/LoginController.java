@@ -37,17 +37,20 @@ public class LoginController {
 		if (!usurioAutenticado.getSenha().equals(usurioAutenticado.getSenha())) {
 			throw new ServletException("Usuaário ou senha inválidos");
 		}
-		
-		
-		String token = Jwts.builder().setSubject(usurioAutenticado.getNome())
-				.signWith(SignatureAlgorithm.HS512, "banana")
-				.setExpiration(new Date(System.currentTimeMillis() + 1 * 60 * 1000 ))
-				.compact();
+				
+		String token = geraTokenDoUsuario(usurioAutenticado);
 		
 		
 
 		return new LoginResponse(token);
 
+	}
+
+	private String geraTokenDoUsuario(Usuario usurioAutenticado) {
+		return Jwts.builder().setSubject(usurioAutenticado.getNome())
+				.signWith(SignatureAlgorithm.HS512, "banana")
+				.setExpiration(new Date(System.currentTimeMillis() + 1 * 60 * 1000 ))
+				.compact();
 	}
 
 	private class LoginResponse {
